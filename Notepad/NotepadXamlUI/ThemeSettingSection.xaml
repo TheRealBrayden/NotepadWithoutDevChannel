@@ -1,0 +1,64 @@
+﻿<UserControl x:ConnectionId='1'
+    x:Class="NotepadXamlUI.ThemeSettingSection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:NotepadXamlUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:util="using:NotepadXamlUI.Utilities"
+    IsTabStop="False"
+                     
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <local:ThemeTextConverter x:Key="ThemeTextConverter" />
+    </UserControl.Resources>
+
+    <local:ExpanderEx x:ConnectionId='2'
+        x:Name="Expander"
+        AutomationProperties.Name="{util:ResourceString Name=SettingThemeHeader}"
+                                   
+                                 >
+        <local:ExpanderEx.Header>
+            <local:ExpanderExWrapper Style="{StaticResource WrapperInExpanderHeaderStyle}">
+                <local:ExpanderExWrapper.MainContent>
+                    <local:ExpanderExDescriptor
+                        Title="{util:ResourceString Name=SettingThemeHeader}"
+                        Description="{util:ResourceString Name=SettingThemeDescription}"
+                        IsAutoHideIcon="False">
+                        <local:ExpanderExDescriptor.Icon>
+                            <local:NotepadIcon FontSize="16" Symbol="Color" />
+                        </local:ExpanderExDescriptor.Icon>
+                    </local:ExpanderExDescriptor>
+                </local:ExpanderExWrapper.MainContent>
+            </local:ExpanderExWrapper>
+        </local:ExpanderEx.Header>
+        <local:ExpanderEx.Content>
+            <StackPanel Padding="48,0,24,0" Spacing="4">
+                <RadioButton x:ConnectionId='3'
+                    x:Name="LightButton"
+                                              
+                    Content="{util:ResourceString Name=ThemeLight}"
+                                                    
+                                                  
+                    Tag="Light" />
+                <RadioButton x:ConnectionId='4'
+                    x:Name="DarkButton"
+                                              
+                    Content="{util:ResourceString Name=ThemeDark}"
+                                                    
+                                                  
+                    Tag="Dark" />
+                <RadioButton x:ConnectionId='5'
+                    x:Name="SystemButton"
+                                              
+                    Content="{util:ResourceString Name=ThemeSystem}"
+                                                    
+                                                  
+                    Tag="System" />
+            </StackPanel>
+        </local:ExpanderEx.Content>
+    </local:ExpanderEx>
+</UserControl>
+

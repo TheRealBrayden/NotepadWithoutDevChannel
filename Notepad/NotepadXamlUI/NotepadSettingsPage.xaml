@@ -1,0 +1,190 @@
+﻿<UserControl x:ConnectionId='1'
+    x:Class="NotepadXamlUI.NotepadSettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:NotepadXamlUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:util="using:NotepadXamlUI.Utilities"
+    IsTabStop="False"
+                               
+                                         
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <x:Double x:Key="WidePageThresholdWidth">958</x:Double>
+        <x:Double x:Key="MediumPageThresholdWidth">646</x:Double>
+
+        <Storyboard x:ConnectionId='2' x:Name="ShowAnimation">
+            <DoubleAnimation
+                Storyboard.TargetName="RootContainer"
+                Storyboard.TargetProperty="Opacity"
+                From="0"
+                To="1"
+                Duration="0:0:0.50" />
+            <DoubleAnimation
+                Storyboard.TargetName="RootTranslateTransform"
+                Storyboard.TargetProperty="X"
+                From="-50"
+                To="0"
+                Duration="0:0:0.32" />
+        </Storyboard>
+
+        <Storyboard x:ConnectionId='3' x:Name="HideAnimation">
+            <DoubleAnimation
+                Storyboard.TargetName="RootContainer"
+                Storyboard.TargetProperty="Opacity"
+                From="1"
+                To="0"
+                Duration="0:0:0.24" />
+            <DoubleAnimation
+                Storyboard.TargetName="RootTranslateTransform"
+                Storyboard.TargetProperty="X"
+                From="0"
+                To="-50"
+                Duration="0:0:0.32" />
+        </Storyboard>
+    </UserControl.Resources>
+
+    <ScrollViewer x:ConnectionId='4'
+        x:Name="RootScrollViewer"
+        HorizontalScrollMode="Disabled"
+        VerticalScrollBarVisibility="Auto"
+                                                                               
+                                              >
+        <Grid x:ConnectionId='5'
+            x:Name="RootContainer"
+            Margin="0,28,0,0"
+            RenderTransformOrigin="0.5,0.5"
+            TabFocusNavigation="Cycle">
+            <Grid.RenderTransform>
+                <TranslateTransform x:ConnectionId='6' x:Name="RootTranslateTransform" />
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock x:ConnectionId='7'
+                x:Name="SettingHeader"
+                Margin="52,0,0,0"
+                HorizontalAlignment="Left"
+                FontSize="40"
+                FontWeight="SemiBold"
+                Style="{ThemeResource HeaderTextBlockStyle}"
+                Text="{util:ResourceString Name=SettingHeader}" />
+
+            <Grid x:ConnectionId='8'
+                x:Name="ContentContainer"
+                Grid.Row="1"
+                Margin="52,24"
+                ColumnSpacing="56">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="4">
+                    <local:ThemeSettingSection x:ConnectionId='15' x:Name="ThemeSettingSection" />
+                    <local:FontSettingSection x:ConnectionId='16' x:Name="FontSettingSection" />
+                </StackPanel>
+
+                <!--  About  -->
+                <StackPanel x:ConnectionId='9' x:Name="AboutContainer" Grid.Column="1">
+                    <TextBlock
+                        FontWeight="Bold"
+                        Style="{StaticResource BodyTextBlockStyle}"
+                        Text="{util:ResourceString Name=SettingAboutHeader}" />
+                    <TextBlock
+                        Margin="0,8"
+                        HorizontalAlignment="Left"
+                        IsTextSelectionEnabled="True"
+                        Style="{StaticResource BodyTextBlockStyle}">
+                        <Run x:ConnectionId='13'                                                    />
+                        <LineBreak />
+                        <Run x:ConnectionId='14'                                                      />
+                    </TextBlock>
+
+                    <StackPanel x:ConnectionId='10'
+                        x:Name="LinksContainer"
+                        Margin="-12,8,0,8"
+                        Spacing="2">
+                        <HyperlinkButton
+                            d:Content="Microsoft Software License Terms"
+                            Content="{util:ResourceString Name=SettingLicenseTerms}"
+                            NavigateUri="https://go.microsoft.com/fwlink/?LinkID=529064" />
+                        <HyperlinkButton
+                            d:Content="Microsoft Services Agreement"
+                            Content="{util:ResourceString Name=SettingServicesAgreement}"
+                            NavigateUri="https://go.microsoft.com/fwlink/?LinkID=822631" />
+                        <HyperlinkButton
+                            d:Content="Microsoft Privacy Statement"
+                            Content="{util:ResourceString Name=SettingPrivacyStatement}"
+                            NavigateUri="https://go.microsoft.com/fwlink/?LinkID=521839" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,8,0,0" Spacing="16">
+                        <Button x:ConnectionId='11'
+                            MinWidth="120"
+                            HorizontalAlignment="Left"
+                            d:Content="Send feedback"
+                                                             
+                            Content="{util:ResourceString Name=SettingFeedback}" />
+                        <Button x:ConnectionId='12'
+                            MinWidth="120"
+                            HorizontalAlignment="Left"
+                            d:Content="Help"
+                                                     
+                            Content="{util:ResourceString Name=SettingHelp}" />
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <!--  Used to handle the layout of the panel area and the prompt area  -->
+            <VisualStateGroup x:ConnectionId='17' x:Name="LayoutGroup">
+                <VisualState x:ConnectionId='21' x:Name="SplitState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WidePageThresholdWidth}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:ConnectionId='22' x:Name="CombineState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AboutContainer.(Grid.Row)" Value="1" />
+                        <Setter Target="AboutContainer.(Grid.Column)" Value="0" />
+                        <Setter Target="AboutContainer.Margin" Value="0,24,0,0" />
+                        <Setter Target="ContentContainer.ColumnSpacing" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <!--  Used to handle the margins of the setting page  -->
+            <VisualStateGroup x:ConnectionId='18' x:Name="SizeGroup">
+                <VisualState x:ConnectionId='19' x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource MediumPageThresholdWidth}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:ConnectionId='20' x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootContainer.Margin" Value="0,16,0,0" />
+                        <Setter Target="ContentContainer.Margin" Value="16" />
+                        <Setter Target="SettingHeader.Margin" Value="16,0,0,0" />
+                        <Setter Target="SettingHeader.FontSize" Value="28" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </ScrollViewer>
+
+</UserControl>
+

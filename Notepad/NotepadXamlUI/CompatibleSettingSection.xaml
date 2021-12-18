@@ -1,0 +1,51 @@
+﻿<UserControl x:ConnectionId='1'
+    x:Class="NotepadXamlUI.CompatibleSettingSection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:NotepadXamlUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:util="using:NotepadXamlUI.Utilities"
+    IsTabStop="False"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <local:CompatibleTextConverter x:Key="CompatibleTextConverter" />
+    </UserControl.Resources>
+
+    <local:ExpanderEx AutomationProperties.Name="{util:ResourceString Name=SettingCompatibleHeader}">
+        <local:ExpanderEx.Header>
+            <local:ExpanderExWrapper
+                InlineIntermediatePadding="16,0"
+                InlineWidePadding="16,0"
+                WrapMargin="16,0"
+                WrapThreshold="0">
+                <local:ExpanderExWrapper.MainContent>
+                    <local:ExpanderExDescriptor
+                        Title="{util:ResourceString Name=SettingCompatibleHeader}"
+                        Description="{util:ResourceString Name=SettingCompatibleDescription}"
+                        IsAutoHideIcon="False">
+                        <local:ExpanderExDescriptor.Icon>
+                            <local:NotepadIcon FontSize="16" Symbol="PageEdit" />
+                        </local:ExpanderExDescriptor.Icon>
+                    </local:ExpanderExDescriptor>
+                </local:ExpanderExWrapper.MainContent>
+                <local:ExpanderExWrapper.WrapContent>
+                    <local:CustomComboBox x:ConnectionId='2'
+                        x:Name="CompatibleComboBox"
+                        MinWidth="120"
+                        AutomationProperties.Name="{util:ResourceString Name=SettingCompatibleHeader}"
+                                                                             
+                                                                                     >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate                                  >
+                                <TextBlock x:ConnectionId='4'                                                                    />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </local:CustomComboBox>
+                </local:ExpanderExWrapper.WrapContent>
+            </local:ExpanderExWrapper>
+        </local:ExpanderEx.Header>
+    </local:ExpanderEx>
+</UserControl>
+

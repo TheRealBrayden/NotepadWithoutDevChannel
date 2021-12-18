@@ -1,0 +1,19 @@
+﻿<Toolkit:XamlApplication
+    x:Class="NotepadXamlUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Toolkit="using:Microsoft.Toolkit.Win32.UI.XamlHost"
+    xmlns:local="using:NotepadXamlUI"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+    <Toolkit:XamlApplication.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <muxc:XamlControlsResources />
+                <ResourceDictionary Source="ms-appx:///NotepadXamlUI/GlobalStyles.xaml" />
+                <ResourceDictionary Source="ms-appx:///NotepadXamlUI/ExpanderExStyles.xaml" />
+                <ResourceDictionary Source="ms-appx:///NotepadXamlUI/OverwriteStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Toolkit:XamlApplication.Resources>
+</Toolkit:XamlApplication>
+
