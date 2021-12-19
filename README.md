@@ -8,4 +8,4 @@ First, download the code as a ZIP file by clicking the green "Code" button and s
 ## Enabling Sideloading
 Open Settings and click "Privacy & security". Then, under "Security", click the "For developers" option with the screwdriver and wrench icon next to it. Set the "Developer mode" toggle to on.  Click "Yes" at the prompt, and close out of Settings.
 ## Sideloading with PowerShell
-Press the Windows and R keys at the same time to open Run. Type "powershell" and press Enter. In the PowerShell window, type `Add-AppxPackage -Path FILEPATH`. **Be sure to use Ctrl+V to paste your AppxManifest file path instead of typing "FILEPATH".** If you did the steps correctly, Notepad should install and will be found in your Start Menu.
+Press the Windows and R keys at the same time to open Run. Type "powershell" and press Enter. In the PowerShell window, type `Add-AppxPackage -Path FILEPATH -Register`. **Be sure to use Ctrl+V to paste your AppxManifest file path instead of typing "FILEPATH".** If you did the steps correctly, Notepad should install and will be found in your Start Menu.
